@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cadastro Escolar</title>
+    <link rel="stylesheet" href="/aula(5)/projeto/style.css">
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1>Sistema de Cadastro Escolar</h1>
+        <p>Bem-vindos ao sistema de cadastros da nossa escola virtual!</p>
+
+        <h2>Menu de Cadastros</h2>
+        <div class="menu">
+           <a href="http://127.0.0.1:5500/aula(5)/projeto/aluno.html"><button>Cadastrar Aluno</button></a>
+          <a href="http://127.0.0.1:5500/aula(5)/projeto/professor.html"> <button>Cadastrar Professor</button></a>  
+           <a href="http://127.0.0.1:5500/aula(5)/projeto/curso.html"><button>Cadastrar Curso</button></a> 
+            <a href="http://127.0.0.1:5500/aula(5)/projeto/livro.html"><button>Cadastrar Livro</button></a>
+        </div>
+
+        <h3>Cadastro de Aluno</h3>
+        <div class="formulario">
+            <form action="#" method="post">
+                
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required><br><br>
+
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" required><br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX"><br><br>
+
+                <label for="serie">Série/Ano:</label>
+                <select name="serie" id="serie" required>
+                    <option value="">Selecione a série</option>
+                    <option value="1">1° Ano</option>
+                    <option value="2">2° Ano</option>
+                    <option value="3">3° Ano</option>
+                    <option value="4">4° Ano</option>
+                    <option value="5">5° Ano</option>
+                </select><br><br>
+                
+                <label>Período:</label>
+                <label><input type="radio" name="periodo" value="manha" required> Manhã</label>
+                <label><input type="radio" name="periodo" value="tarde"> Tarde</label>
+                <label><input type="radio" name="periodo" value="noite"> Noite</label>
+                <label><input type="radio" name="periodo" value="integral"> Integral</label><br><br>
+
+                <label>Atividades Extras:</label>
+                <label><input type="checkbox" name="atividades" value="esportes"> Esportes</label>
+                <label><input type="checkbox" name="atividades" value="musica"> Música</label>
+                <label><input type="checkbox" name="atividades" value="teatro"> Teatro</label>
+                <label><input type="checkbox" name="atividades" value="informatica"> Informática</label>
+                <label><input type="checkbox" name="atividades" value="outro"> Outro</label><br><br>
+
+                <label for="observacoes">Observações adicionais:</label><br>
+                <textarea id="observacoes" name="observacoes" placeholder="Digite aqui suas observações"></textarea><br><br>
+
+                <button type="submit">Cadastrar</button>
+                <button type="reset">Limpar</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>

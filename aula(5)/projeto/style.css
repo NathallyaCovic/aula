@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #e6f3f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #cce0e4;
+    padding: 30px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 600px;
+    color: #000000; /* deixa texto visível no fundo escuro */
+}
+
+/* Títulos */
+h1, h2, h3 {
+    margin: 0;
+    padding: 10px 0;
+    color: #000000;
+}
+
+/* Menu de botões */
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Botões */
+button {
+    background-color: #2a4899;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #1e3574;
+}
+
+/* Formulário */
+.formulario form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #e6f3f5;
+    padding: 20px;
+    border-radius: 10px;
+    color: #202020;
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+}
+
+/* Campos de entrada */
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #2a4899;
+    box-shadow: 0 0 5px rgba(42, 72, 153, 0.5);
+}
