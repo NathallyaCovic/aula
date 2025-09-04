@@ -1,0 +1,123 @@
+/* Cor do parágrafo */
+p {
+  color: rgb(27, 27, 245);
+}
+
+/* Título principal */
+#titulo-principal {
+  color: yellow;
+}
+
+/* Subtítulos com classe */
+.subtitulo {
+  color: green;
+}
+
+/* Estilizando listas */
+ul li {
+  color: red;
+}
+
+/* Cor de fundo diferente */
+#caixa1 {
+  background-color: lightblue;
+}
+#caixa2 {
+  background-color: lightcoral;
+}
+
+/* Agrupando seletores */
+p, h2, h3 {
+  color: purple;
+}
+
+/* Texto centralizado */
+#paragrafo-centralizado {
+  text-align: center;
+}
+
+/* Diferenciando links */
+#link-google {
+  color: orange;
+}
+#link-youtube {
+  color: crimson;
+}
+
+/* Classe compartilhada */
+.negrito {
+  font-weight: bold;
+}
+
+/* Estilizando imagens */
+img {
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+/* Descendente */
+div p {
+  color: brown;
+}
+
+/* Dois parágrafos diferentes */
+.primeiro {
+  color: teal;
+}
+.segundo {
+  color: darkred;
+}
+
+/* Mudando fonte */
+#titulo-fonte {
+  font-family: Arial, sans-serif;
+}
+
+/* Negrito e itálico */
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+.underline {
+  text-decoration: underline;
+}
+
+/* Cor apenas no título dentro da div */
+div h3 {
+  color: darkblue;
+}
+
+/* Seletores repetidos */
+#div1 {
+  background-color: red;
+}
+#div2 {
+  background-color: green;
+}
+#div3 {
+  background-color: blue;
+}
+
+/* Estilizando span */
+.destaque {
+  color: orange;
+}
+
+/* Caixa colorida */
+#caixa-colorida {
+  background-color: lightgreen;
+  border: 3px solid black;
+  padding: 10px;
+}
+
+/* Links com classe */
+.sublinhado {
+  text-decoration: underline;
+}
+
+/* Agrupando tudo */
+h1, p, a {
+  color: darkmagenta;
+}
