@@ -1,0 +1,49 @@
+body{
+  font-family: Arial, sans-serif;
+margin: 10px;
+line-height: 30px;
+}
+
+.caixa{
+  width: 120px;
+  height: 100px;
+  text-align: center;
+line-height: 100px;
+margin: 10px;
+color: white;
+}
+
+.direita{
+float: right;
+background-color: rgb(63, 100, 168);
+}
+
+.esquerda{
+  float: left;
+  background-color: rgb(207, 36, 70);
+
+}
+
+.float_none{
+  float: none;
+  background-color: grey;
+}
+
+.pai{
+  float: left;
+  padding: 10px;
+  line-height: normal;
+background-color: forestgreen;
+}
+
+.filho{
+float: inherit;
+width: 100px;
+height: 60px;
+line-height: 60px;
+background-color: gold;
+}
+
+.clear{
+clear: both;
+}

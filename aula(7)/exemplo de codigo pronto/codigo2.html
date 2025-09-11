@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exemplos de Float CSS</title>
+<style>
+/* ========================
+   RESET E CONFIGURAÇÃO
+======================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #f0f4f8, #d9e2f3);
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+h1, h2 { color: #2c3e50; text-align: center; }
+p { margin-bottom: 10px; }
+button { cursor: pointer; }
+
+/* ========================
+   HEADER
+======================== */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+header h1 { font-size: 2.5em; margin-bottom: 10px; }
+header p { font-size: 1.1em; color: #555; max-width: 900px; margin: 0 auto; }
+
+/* ========================
+   BLOCOS
+======================== */
+.blocos {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.bloco {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  overflow: auto; /* para conter os floats */
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1s forwards;
+  transition: transform 0.3s ease;
+}
+.bloco:hover { transform: translateY(-5px); }
+
+@keyframes fadeInUp {
+  0% { opacity:0; transform: translateY(50px); }
+  60% { opacity:0.8; transform: translateY(-10px);}
+  100% { opacity:1; transform: translateY(0);}
+}
+
+/* ========================
+   QUADRADOS
+======================== */
+.float-box {
+  width: 220px;
+  position: relative;
+}
+.quadrado {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+.quadrado:hover {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+.azul { background: #3498db; }
+.vermelho { background: #e74c3c; }
+.verde { background: #2ecc71; }
+.amarelo { background: #f1c40f; }
+.roxo { background: #9b59b6; }
+
+/* ========================
+   FLOAT CLASSES
+======================== */
+.left { float: left; margin-right: 15px; }
+.right { float: right; margin-left: 15px; }
+.none { float: none; display: block; margin: 0 auto; }
+.inline-start { float: inline-start; margin-inline-end: 15px; }
+.inline-end { float: inline-end; margin-inline-start: 15px; }
+
+/* ========================
+   CONTEÚDO
+======================== */
+.conteudo {
+  overflow: hidden;
+}
+button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 0.9em;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+button:hover {
+  background-color: #2c80b4;
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* ========================
+   RESPONSIVO
+======================== */
+@media(max-width: 768px) {
+  .bloco { flex-direction: column; }
+  .float-box { float: none !important; margin: 0 auto; }
+  .conteudo { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Exemplos de Float CSS</h1>
+<p>Veja como cada tipo de <code>float</code> funciona. Clique no botão para alternar o float e veja o efeito no quadrado e no texto.</p>
+</header>
+
+<main class="blocos">
+
+<!-- FLOAT LEFT -->
+<section class="bloco">
+<h2>Float Left</h2>
+<figure class="float-box left">
+  <div class="quadrado azul"></div>
+  <figcaption>float: left</figcaption>
+</figure>
+<div class="conteudo">
+  <p>O quadrado flutua à esquerda; o texto flui à direita.</p>
+  <button class="alterar">Alterar Float</button>
+</div>
+</section>
+
+<!-- FLOAT RIGHT -->
+<section class="bloco">
+<h2>Float Right</h2>
+<figure class="float-box right">
+  <div class="quadrado vermelho"></div>
+  <figcaption>float: right</figcaption>
+</figure>
+<div class="conteudo">
+  <p>O quadrado flutua à direita; o texto flui à esquerda.</p>
+  <button class="alterar">Alterar Float</button>
+</div>
+</section>
+
+<!-- FLOAT NONE -->
+<section class="bloco">
+<h2>Float None</h2>
+<figure class="float-box none">
+  <div class="quadrado verde"></div>
+  <figcaption>float: none</figcaption>
+</figure>
+<div class="conteudo">
+  <p>O quadrado não flutua; ele ocupa a posição normal no fluxo.</p>
+  <button class="alterar">Alterar Float</button>
+</div>
+</section>
+
+<!-- FLOAT INLINE-START -->
+<section class="bloco">
+<h2>Float Inline-Start</h2>
+<figure class="float-box inline-start">
+  <div class="quadrado amarelo"></div>
+  <figcaption>float: inline-start</figcaption>
+</figure>
+<div class="conteudo">
+  <p>O float segue o início da linha dependendo da direção do texto (LTR → esquerda, RTL → direita).</p>
+  <button class="alterar">Alterar Float</button>
+</div>
+</section>
+
+<!-- FLOAT INLINE-END -->
+<section class="bloco">
+<h2>Float Inline-End</h2>
+<figure class="float-box inline-end">
+  <div class="quadrado roxo"></div>
+  <figcaption>float: inline-end</figcaption>
+</figure>
+<div class="conteudo">
+  <p>O float segue o final da linha dependendo da direção do texto (LTR → direita, RTL → esquerda).</p>
+  <button class="alterar">Alterar Float</button>
+</div>
+</section>
+
+</main>
+
+<script>
+const infoText = {
+  left: "O quadrado flutua à esquerda; o texto flui à direita.",
+  right: "O quadrado flutua à direita; o texto flui à esquerda.",
+  none: "O quadrado não flutua; mantém o fluxo normal.",
+  "inline-start": "O float segue o início da linha (LTR = esquerda, RTL = direita).",
+  "inline-end": "O float segue o final da linha (LTR = direita, RTL = esquerda)."
+};
+
+document.querySelectorAll('.alterar').forEach(button => {
+  button.addEventListener('click', () => {
+    const bloco = button.closest('.bloco');
+    const figure = bloco.querySelector('figure');
+    const conteudo = bloco.querySelector('.conteudo p');
+    const classes = ['left','right','none','inline-start','inline-end'];
+    let current = classes.findIndex(c => figure.classList.contains(c));
+    figure.classList.remove(classes[current]);
+    let next = (current + 1) % classes.length;
+    figure.classList.add(classes[next]);
+    conteudo.textContent = infoText[classes[next]];
+    figure.querySelector('figcaption').textContent = "float: " + classes[next];
+
+    // animação de efeito leve
+    figure.style.transform = "scale(0.95)";
+    setTimeout(()=> { figure.style.transform = "scale(1)"; }, 200);
+  });
+});
+</script>
+
+</body>
+</html>
