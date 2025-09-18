@@ -1,0 +1,333 @@
+.tabela1 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela1, .tabela1 th, .tabela1 td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+
+
+
+
+
+
+
+.tabela2 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela2, .tabela2 th, .tabela2 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+.tabela2 th {
+    background-color: #d3d3d3;
+}
+
+
+
+
+.tabela3 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela3, .tabela3 th, .tabela3 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+.tabela3 td {
+    color: blue;
+}
+
+
+
+
+
+.tabela4 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+.tabela4, .tabela4 th, .tabela4 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+
+
+
+
+
+
+
+
+.tabela5 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela5, .tabela5 th, .tabela5 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+.tabela5 th {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+.tabela6 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela6, .tabela6 th, .tabela6 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+.tabela6 td {
+    background: #f9f9e6;
+}
+
+
+
+
+
+
+.tabela7 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela7, .tabela7 th, .tabela7 td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: center;
+}
+
+
+
+
+
+
+.tabela8 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela8, .tabela8 th, .tabela8 td {
+    border: 3px solid black;
+    padding: 8px;
+}
+
+
+
+
+
+
+
+.tabela9 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela9, .tabela9 th, .tabela9 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+.tabela9 th {
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+
+.tabela10 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela10, .tabela10 th, .tabela10 td {
+    border: 1px solid #333;
+    padding: 12px 18px;
+}
+
+
+
+
+
+.tabela11 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela11, .tabela11 th, .tabela11 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+.tabela11 td:first-child {
+    font-style: italic;
+}
+
+
+
+
+
+
+
+.tabela12 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela12, .tabela12 th, .tabela12 td {
+    border: 1px solid #333;
+    padding: 8px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+.tabela13 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela13, .tabela13 th, .tabela13 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+.tabela13 tr:nth-child(2) {
+    background: #ffe0b2;
+}
+
+
+
+
+
+
+.tabela14 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela14, .tabela14 th, .tabela14 td {
+    border: 1px solid #333;
+    padding: 8px;
+    color: green;
+}
+
+
+
+
+
+
+
+.tabela15 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 1.1em;
+}
+.tabela15, .tabela15 th, .tabela15 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+
+
+
+
+
+
+.tabela16 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela16, .tabela16 th, .tabela16 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+.tabela16 tr:nth-child(3) {
+    background: #d1f0ff;
+}
+
+
+
+
+
+
+.tabela17 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela17, .tabela17 th, .tabela17 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+.tabela17 th {
+    background: #333;
+    color: white;
+}
+
+.tabela18 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.tabela18, .tabela18 th, .tabela18 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+
+
+
+
+
+
+
+
+
+.tabela19 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabela19, .tabela19 th, .tabela19 td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+.tabela19 th {
+    font-family: "Georgia", serif;
+}
+
+
+
+.tabela20 {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    color: #222;
+}
+.tabela20, .tabela20 th, .tabela20 td {
+    border: 1px solid #000000;
+    padding: 8px;
+}
+.tabela20 th {
+    background: #444;
+    color: white;
+    font-weight: bold;
+}
+.tabela20 td {
+    background: #c0ffd0;
+}
+.tabela20 td:nth-child(even) {
+    background: #e1f0ff;
+}
