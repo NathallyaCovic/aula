@@ -1,0 +1,63 @@
+.tabela-horario {
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+.tabela-horario th, .tabela-horario td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
+.tabela-horario th {
+    background-color: #942c94;
+    color: #fff;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.campeonato-futebol {
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+.campeonato-futebol th, .campeonato-futebol td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
+.campeonato-futebol th {
+    background-color: #abe7d8;
+}
+.campeonato-futebol td:nth-child(2) {
+    font-weight: bold;
+    background-color: #797ad3;
+}
+.campeonato-futebol tr:nth-child(2) {
+    background-color: #943b9c;
+    color: #ffffff;
+}
+
+        .makita{
+            border-collapse: collapse;
+            width: 70%;
+            max-width: 600px;
+            background-color: #fff;
+            border: 1px solid #000000; /* borda mais em negrito */
+            margin: 20px auto; /* centraliza a tabela na página */
+        }
+
+        .makita th, td {
+            border: 3px solid #000000;
+            padding: 12px;
+            text-align: center; /* centraliza textos e imagens */
+        }
+
+        .makita th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        img {
+            width: 100px; /* largura das imagens */
+            height: auto;
+            display: block;
+            margin: 0 auto; /* centraliza dentro da célula */
+        }
