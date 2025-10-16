@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Site Semântico - Exemplo</title>
+  <style>
+    /* Estilos simples para ficar apresentável */
+    :root{font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color-scheme: light;}
+    body{margin:0; line-height:1.6; color:#222; background:#f7f7f8}
+    header, footer{background:#104e8b; color:#fff; padding:16px 20px}
+    header h1{margin:0; font-size:1.4rem}
+    nav{margin-top:8px}
+    nav a{color:#fff; text-decoration:none; margin-right:12px}
+    .container{max-width:1000px; margin:20px auto; padding:0 16px}
+    main{display:grid; grid-template-columns: 1fr 320px; gap:20px}
+    section, article, aside{background:#fff; padding:16px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+    article h2{margin-top:0}
+    figure{margin:0}
+    figcaption{font-size:0.9rem; color:#555}
+    footer p{margin:4px 0}
+    /* responsivo: em telas pequenas, coluna única */
+    @media (max-width:780px){
+      main{grid-template-columns:1fr}
+      nav a{display:inline-block; margin:6px 8px 0 0}
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER: conteúdo introdutório (logo, título, navegação) -->
+  <header role="banner">
+    <div class="container">
+      <h1>Minha Casa — Exemplo de Site Semântico</h1>
+      <nav aria-label="Menu principal">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#blog">Blog</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="inicio" role="main">
+    <!-- SECTION: área temática (pode conter artigos) -->
+    <section aria-labelledby="bemvindo">
+      <h2 id="bemvindo">Bem-vindo à Minha Casa</h2>
+      <p>Esse exemplo mostra como usar <strong>tags semânticas</strong> no HTML. Elas ajudam quem usa leitor de tela, os buscadores e outros desenvolvedores a entenderem a página.</p>
+
+      <!-- ARTICLE: conteúdo independente (post, notícia, etc.) -->
+      <article aria-labelledby="post1">
+        <h2 id="post1">5 Coisas para Fazer em Casa</h2>
+        <p>Este artigo é independente: pode ser compartilhado sozinho e ainda fazer sentido.</p>
+        <ul>
+          <li>Ler um livro</li>
+          <li>Fazer uma receita rápida</li>
+          <li>Organizar fotos</li>
+          <li>Estudar algo novo</li>
+          <li>Fazer uma caminhada curta</li>
+        </ul>
+        <p>Publicado em <time datetime="2025-09-25">25 de setembro de 2025</time>.</p>
+      </article>
+
+      <!-- OUTRO ARTICLE: exemplo de post curto -->
+      <article aria-labelledby="post2">
+        <h2 id="post2">Dica Rápida</h2>
+        <p>Coloque datas usando a tag <code>&lt;time&gt;</code>, assim ferramentas conseguem identificar e manipular o valor de data corretamente.</p>
+      </article>
+
+      <!-- FIGURE: imagem ou ilustração com legenda -->
+      <figure>
+          <img src="https://via.placeholder.com/800x300?text=Imagem+Exemplo" alt="Imagem exemplo de um quarto organizado" style="width:100%; border-radius:6px; display:block">
+          <figcaption>Fig. 1 — Quarto organizado: um exemplo de conteúdo ilustrativo.</figcaption>
+        </figure>
+    </section>
+
+    <!-- ASIDE: conteúdo relacionado, tipo barra lateral -->
+    <aside aria-label="Informações relacionadas">
+      <h3>Recado</h3>
+      <p>Não esqueça de regar as plantas amanhã.</p>
+    
+      <h4>Links úteis</h4>
+      <ul>
+        <li><a href="#">Como organizar um ambiente</a></li>
+        <li><a href="#">Receitas fáceis</a></li>
+      </ul>
+    
+      <!-- DETAILS + SUMMARY: bloco expansível (FAQ, etc.) -->
+      <details>
+        <summary>Perguntas frequentes</summary>
+        <p>Use <code>&lt;details&gt;</code> e <code>&lt;summary&gt;</code> para conteúdo que o usuário pode abrir/fechar, como FAQs.</p>
+      </details>
+    </aside>
+</main>
+
+<!-- FOOTER: informações finais da página -->
+<footer role="contentinfo">
+    <div class="container">
+        <p>&copy; <time datetime="2025-09-25">2025</time> Minha Casa — Todos os direitos reservados</p>
+        <p>Contato: <a href="mailto:contato@exemplo.com">contato@exemplo.com</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
