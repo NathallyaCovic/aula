@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .content{
+      background-color: rgb(223, 223, 223);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: #111 0 4px 15px rgba(0,0,0,0.1);
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: #fff;
+      color: #111;
+    }
+
+    header, footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    main {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      flex: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Blog do Desenvolvedor</h1>
+    <nav aria-label="Menu principal">
+      <a href="#">Início</a>
+      <a href="#">Tutoriais</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="content">
+      <article>
+        <header>
+          <h2>Como aprender HTML</h2>
+          <time datetime="2025-10-10">10 de outubro de 2025</time>
+        </header>
+        <section>
+          <p>Aprender HTML é o primeiro passo para criar sites. Comece pelos elementos básicos.</p>
+        </section>
+        <footer>
+          <p>Autor: Nathalya</p>
+        </footer>
+      </article>
+
+      <article>
+        <header>
+          <h2>CSS: Dando estilo à web</h2>
+          <time datetime="2025-10-12">12 de outubro de 2025</time>
+        </header>
+        <section>
+          <p>O CSS é usado para estilizar o HTML. Com ele, você controla cores, fontes e layout.</p>
+        </section>
+        <footer>
+          <p>Autor: Nathalya</p>
+        </footer>
+      </article>
+
+      <article>
+        <header>
+          <h2>JavaScript para iniciantes</h2>
+          <time datetime="2025-10-15">15 de outubro de 2025</time>
+        </header>
+        <section>
+          <p>JavaScript traz interatividade aos sites. Ideal para quem quer criar páginas dinâmicas.</p>
+        </section>
+        <footer>
+          <p>Autor: Nathalya</p>
+        </footer>
+      </article>
+    </div>
+
+    <aside>
+      <h3>Posts populares</h3>
+      <ul>
+        <li>Como criar um site do zero</li>
+        <li>Melhores práticas de CSS</li>
+        <li>Introdução ao JavaScript</li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer>
+    <p>© 2025 Blog do Desenvolvedor | Siga-nos:
+      <a href="#">Instagram</a> |
+      <a href="#">LinkedIn</a>
+    </p>
+  </footer>
+</body>
+</html>
