@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #303030;
+}
+
+.freeze {
+  background-color: rgb(142, 142, 142);
+  color: white;
+  height: 15px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: FIXED;
+  top: 20px;
+  right: 20px;
+}
+
+.retangle {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.linha {
+  display: flex;
+  gap: 15px;
+}
+.linha2 {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+.linha3 {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+.linha4 {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.linha5 {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.linha6 {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.container {
+  background-color: black;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Segunda linha */
+.container2 {
+  background-color: rgb(255, 58, 58);
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container3 {
+  background-color: rgb(68, 58, 255);
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container4 {
+  background-color: rgb(89, 109, 235);
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container5 {
+  background-color: rgb(220, 233, 139);
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  color: white;
+  font-size: 20px;
+}
+
+.linha7 {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.linha8 {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+.linha9 {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
