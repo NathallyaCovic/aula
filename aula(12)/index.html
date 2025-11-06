@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Portfólio - Desenvolvedor</title>
+    <style>
+      
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Reestruturando variáveis CSS para funcionar com checkbox */
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #1a1a1a;
+      --bg-tertiary: #2a2a2a;
+      --text-primary: #e0e0e0;
+      --text-secondary: #a0a0a0;
+      --text-white: #ffffff;
+      --accent-color: #3b82f6;
+      --accent-hover: #2563eb;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Escondendo o checkbox de tema */
+    #theme-toggle {
+      display: none;
+    }
+
+    /* Adicionando tema claro quando checkbox está marcado usando seletor correto */
+    #theme-toggle:checked ~ .page-wrapper {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f5f5;
+      --bg-tertiary: #e0e0e0;
+      --text-primary: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --text-white: #0a0a0a;
+    }
+
+    .page-wrapper {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* Header e Navegação */
+    header {
+      background-color: var(--bg-secondary);
+      padding: 1.5rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Adicionando estilos para menu hamburger responsivo */
+    #menu-toggle {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-primary);
+      transition: all 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Melhorando estilo do botão de alternância de tema */
+    .theme-toggle-label {
+      cursor: pointer;
+      width: 50px;
+      height: 26px;
+      background-color: var(--bg-tertiary);
+      border-radius: 50px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 4px;
+      transition: background-color 0.3s;
+    }
+
+    .theme-toggle-label:hover {
+      background-color: var(--accent-color);
+    }
+
+    .theme-toggle-label::before {
+      content: '🌙';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      transition: transform 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      left: 3px;
+    }
+
+    #theme-toggle:checked ~ .page-wrapper .theme-toggle-label::before {
+      content: '☀️';
+      transform: translateX(24px);
+    }
+
+    /* Seções */
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-white);
+    }
+
+    .hero .highlight {
+      color: var(--accent-color);
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
+    }
+
+    /* Adicionando estilos para botão de download do currículo */
+    .cv-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background-color: var(--bg-tertiary);
+      color: var(--text-primary);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.3s;
+      border: 2px solid var(--accent-color);
+    }
+
+    .cv-button:hover {
+      background-color: var(--accent-color);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: var(--accent-color);
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Sobre */
+    .sobre {
+      background-color: var(--bg-secondary);
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--text-white);
+      text-align: center;
+    }
+
+    .sobre-content {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .sobre-text {
+      flex: 1;
+    }
+
+    .sobre-text p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .sobre-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .profile-placeholder {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 4px solid var(--accent-color);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Habilidades */
+    .habilidades-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .habilidade-item {
+      background-color: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 12px;
+      transition: transform 0.3s;
+    }
+
+    .habilidade-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .habilidade-item h3 {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .skill-bar {
+      background-color: var(--bg-tertiary);
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-hover) 100%);
+      border-radius: 5px;
+      transition: width 1s ease-in-out;
+    }
+
+    /* Projetos */
+    .projetos {
+      background-color: var(--bg-secondary);
+    }
+
+    /* Adicionando estilos para filtros de projetos */
+    .project-filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-input {
+      display: none;
+    }
+
+    .filter-label {
+      padding: 0.8rem 1.5rem;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid var(--bg-tertiary);
+    }
+
+    .filter-label:hover {
+      border-color: var(--accent-color);
+    }
+
+    .filter-input:checked + .filter-label {
+      background-color: var(--accent-color);
+      color: #ffffff;
+      border-color: var(--accent-color);
+    }
+
+    .projetos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .projeto-card {
+      display: none;
+      background-color: var(--bg-primary);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .projeto-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Atualizando filtros para incluir novas categorias */
+    #filter-all:checked ~ .projetos-grid .projeto-card,
+    #filter-html:checked ~ .projetos-grid .projeto-card[data-tech*="html"],
+    #filter-figma:checked ~ .projetos-grid .projeto-card[data-tech*="figma"],
+    #filter-flutter:checked ~ .projetos-grid .projeto-card[data-tech*="flutter"],
+    #filter-godot:checked ~ .projetos-grid .projeto-card[data-tech*="godot"] {
+      display: block;
+    }
+
+    /* Adicionando estilos para imagens de projetos */
+    .projeto-card a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+    }
+
+    .projeto-image {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .projeto-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .projeto-card:hover .projeto-image img {
+      transform: scale(1.1);
+    }
+
+    .projeto-content {
+      padding: 1.5rem;
+    }
+
+    .projeto-content h3 {
+      color: var(--text-white);
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .projeto-content p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      background-color: var(--bg-secondary);
+      color: var(--accent-color);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      border: 1px solid var(--accent-color);
+    }
+
+    /* Contato */
+    .contato-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contato-content > p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      background-color: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: var(--bg-primary);
+      border: 2px solid var(--bg-tertiary);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 1rem 2rem;
+      background-color: var(--accent-color);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .divider {
+      margin: 2rem 0;
+      text-align: center;
+      color: var(--text-secondary);
+      position: relative;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background-color: var(--bg-tertiary);
+    }
+
+    .divider::before {
+      left: 0;
+    }
+
+    .divider::after {
+      right: 0;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg-secondary);
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-secondary);
+    }
+
+    /* Adicionando estilos para seção de depoimentos com carrossel */
+    .testimonials {
+      background-color: var(--bg-primary);
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .carousel-input {
+      display: none;
+    }
+
+    .carousel-slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .testimonial-slide {
+      min-width: 100%;
+      padding: 2rem;
+      background-color: var(--bg-secondary);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .testimonial-text {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      line-height: 1.8;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--accent-color);
+      margin-bottom: 0.3rem;
+    }
+
+    .testimonial-role {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--bg-tertiary);
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #testimonial-1:checked ~ .carousel-slides {
+      transform: translateX(0%);
+    }
+
+    #testimonial-2:checked ~ .carousel-slides {
+      transform: translateX(-100%);
+    }
+
+    #testimonial-3:checked ~ .carousel-slides {
+      transform: translateX(-200%);
+    }
+
+    #testimonial-1:checked ~ .carousel-dots label:nth-child(1),
+    #testimonial-2:checked ~ .carousel-dots label:nth-child(2),
+    #testimonial-3:checked ~ .carousel-dots label:nth-child(3) {
+      background-color: var(--accent-color);
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      .sobre-content {
+        flex-direction: column;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        flex-direction: column;
+        background-color: var(--bg-secondary);
+        width: 100%;
+        padding: 2rem;
+        transition: left 0.3s;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      #menu-toggle:checked ~ .page-wrapper nav .nav-links {
+        left: 0;
+      }
+
+      #menu-toggle:checked ~ .page-wrapper .hamburger span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      #menu-toggle:checked ~ .page-wrapper .hamburger span:nth-child(2) {
+        opacity: 0;
+      }
+
+      #menu-toggle:checked ~ .page-wrapper .hamburger span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .theme-toggle-label {
+        margin-top: 1rem;
+      }
+
+      .project-filters {
+        gap: 0.5rem;
+      }
+
+      .filter-label {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
+      color: #e5e5e5;
+      overflow-x: hidden;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, #667eea, transparent);
+      transform: translateX(-50%);
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-line {
+        left: 20px;
+      }
+    }
+    
+    .timeline-item {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #667eea;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .profile-image {
+      border: 4px solid #667eea;
+      box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+    }
+    </style>
+</head>
+<body>
+  <input type="checkbox" id="theme-toggle">
+  <!-- Adicionando checkbox para menu hamburger -->
+  <input type="checkbox" id="menu-toggle">
+
+  <div class="page-wrapper">
+    <header>
+      <nav>
+        <div class="logo">Portfólio</div>
+        <!-- Adicionando botão hamburger -->
+        <label for="menu-toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <ul class="nav-links">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><label for="theme-toggle" class="theme-toggle-label"></label></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+      <h1>Olá, eu sou <span class="highlight">Desenvolvedor</span></h1>
+      <p>Criando soluções digitais incríveis</p>
+      <!-- Adicionando botão de download do currículo -->
+      <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+        <a href="#contato" class="cta-button">Entre em Contato</a>
+        <a href="/curriculo.pdf" download class="cv-button">
+          📄 Baixar Currículo
+        </a>
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="sobre">
+      <h2>Sobre Mim</h2>
+      <div class="sobre-content">
+        <div class="sobre-text">
+          <p>Sou um desenvolvedor apaixonado por tecnologia e inovação. Com experiência em diversas linguagens e frameworks, busco sempre criar soluções eficientes e elegantes.</p>
+          <p>Meu foco está em desenvolvimento web moderno, com ênfase em criar experiências de usuário excepcionais e código limpo e manutenível.</p>
+          <p>Estou sempre aprendendo novas tecnologias e aprimorando minhas habilidades para entregar os melhores resultados.</p>
+        </div>
+        <div class="sobre-image">
+          <div class="profile-placeholder">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-10-16%20at%2014.39.19-t3ugc4r79c94S4Gz3QmQhNMdcf2wJ6.jpeg" alt="Foto de perfil" class="profile-image">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section id="habilidades">
+      <h2>Minhas Habilidades</h2>
+      <div class="habilidades-grid">
+        <div class="habilidade-item">
+          <h3>HTML & CSS</h3>
+          <p>Criação de layouts responsivos e modernos</p>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="habilidade-item">
+          <h3>JavaScript</h3>
+          <p>Desenvolvimento de aplicações interativas</p>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 85%"></div>
+          </div>
+        </div>
+        <div class="habilidade-item">
+          <h3>React</h3>
+          <p>Construção de interfaces dinâmicas</p>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 80%"></div>
+          </div>
+        </div>
+        <div class="habilidade-item">
+          <h3>Node.js</h3>
+          <p>Desenvolvimento backend e APIs</p>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 75%"></div>
+          </div>
+        </div>
+        <div class="habilidade-item">
+          <h3>Git & GitHub</h3>
+          <p>Controle de versão e colaboração</p>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 85%"></div>
+          </div>
+        </div>
+        <div class="habilidade-item">
+          <h3>Design Responsivo</h3>
+          <p>Layouts adaptáveis para todos os dispositivos</p>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 90%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos" class="projetos">
+      <h2>Meus Projetos</h2>
+      
+      <!-- Atualizando filtros com novas categorias -->
+      <div class="project-filters">
+        <input type="radio" name="filter" id="filter-all" class="filter-input" checked>
+        <label for="filter-all" class="filter-label">Todos</label>
+        
+        <input type="radio" name="filter" id="filter-html" class="filter-input">
+        <label for="filter-html" class="filter-label">HTML/CSS</label>
+        
+        <input type="radio" name="filter" id="filter-figma" class="filter-input">
+        <label for="filter-figma" class="filter-label">Figma</label>
+        
+        <input type="radio" name="filter" id="filter-flutter" class="filter-input">
+        <label for="filter-flutter" class="filter-label">Dart/Flutter</label>
+        
+        <input type="radio" name="filter" id="filter-godot" class="filter-input">
+        <label for="filter-godot" class="filter-label">Godot Engine</label>
+      </div>
+
+      <!-- Adicionando cards de projetos com imagens e links para página de detalhes -->
+      <div class="projetos-grid">
+        <div class="projeto-card" data-tech="html">
+          <a href="projeto-detalhes.html?id=portfolio-site">
+            <div class="projeto-image">
+              <img src="/placeholder.svg?height=250&width=400" alt="Portfolio Website">
+            </div>
+            <div class="projeto-content">
+              <h3>Portfolio Responsivo</h3>
+              <p>Site de portfólio profissional com design moderno, modo claro/escuro e animações suaves.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">Responsivo</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="projeto-card" data-tech="html">
+          <a href="projeto-detalhes.html?id=landing-page">
+            <div class="projeto-image">
+              <img src="/placeholder.svg?height=250&width=400" alt="Landing Page">
+            </div>
+            <div class="projeto-content">
+              <h3>Landing Page Corporativa</h3>
+              <p>Página de captura otimizada para conversão com formulário integrado e design atrativo.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">Forms</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="projeto-card" data-tech="figma">
+          <a href="projeto-detalhes.html?id=app-design">
+            <div class="projeto-image">
+              <img src="/placeholder.svg?height=250&width=400" alt="App Design">
+            </div>
+            <div class="projeto-content">
+              <h3>Design de App Mobile</h3>
+              <p>Interface completa de aplicativo de delivery com sistema de design consistente e protótipo interativo.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Figma</span>
+                <span class="tech-tag">UI/UX</span>
+                <span class="tech-tag">Protótipo</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="projeto-card" data-tech="figma">
+          <a href="projeto-detalhes.html?id=dashboard-design">
+            <div class="projeto-image">
+              <img src="/placeholder.svg?height=250&width=400" alt="Dashboard Design">
+            </div>
+            <div class="projeto-content">
+              <h3>Dashboard Administrativo</h3>
+              <p>Design de painel administrativo com gráficos, tabelas e visualização de dados complexos.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Figma</span>
+                <span class="tech-tag">Data Viz</span>
+                <span class="tech-tag">Admin</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="projeto-card" data-tech="flutter">
+          <a href="projeto-detalhes.html?id=task-app">
+            <div class="projeto-image">
+              <img src="/placeholder.svg?height=250&width=400" alt="Task App">
+            </div>
+            <div class="projeto-content">
+              <h3>App de Gerenciamento de Tarefas</h3>
+              <p>Aplicativo multiplataforma para organização de tarefas com sincronização em nuvem.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Dart</span>
+                <span class="tech-tag">Firebase</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="projeto-card" data-tech="flutter">
+          <a href="projeto-detalhes.html?id=ecommerce-app">
+            <div class="projeto-image">
+              <img src="/placeholder.svg?height=250&width=400" alt="E-commerce App">
+            </div>
+            <div class="projeto-content">
+              <h3>E-commerce Mobile</h3>
+              <p>Aplicativo de compras online com carrinho, pagamentos e rastreamento de pedidos.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Dart</span>
+                <span class="tech-tag">API REST</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="projeto-card" data-tech="godot">
+          <a href="projeto-detalhes.html?id=platformer-game">
+            <div class="projeto-image">
+              <img src="/placeholder.svg?height=250&width=400" alt="Platformer Game">
+            </div>
+            <div class="projeto-content">
+              <h3>Jogo de Plataforma 2D</h3>
+              <p>Jogo de plataforma com física realista, power-ups e sistema de níveis progressivos.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Godot</span>
+                <span class="tech-tag">GDScript</span>
+                <span class="tech-tag">2D</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="projeto-card" data-tech="godot">
+          <a href="projeto-detalhes.html?id=puzzle-game">
+            <div class="projeto-image">
+              <img src="/placeholder.svg?height=250&width=400" alt="Puzzle Game">
+            </div>
+            <div class="projeto-content">
+              <h3>Jogo de Puzzle</h3>
+              <p>Jogo de quebra-cabeça com mecânicas inovadoras e mais de 50 níveis desafiadores.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Godot</span>
+                <span class="tech-tag">GDScript</span>
+                <span class="tech-tag">Logic</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+      <!-- Timeline Section -->
+  <section id="experiencia" class="py-24 px-6 bg-black/30">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">Experiência</h2>
+      <div class="relative">
+        <div class="timeline-line"></div>
+        
+        <!-- Timeline Item 1 -->
+        <div class="timeline-item mb-16 md:mb-24 relative">
+          <div class="md:grid md:grid-cols-2 md:gap-8">
+            <div class="md:text-right mb-4 md:mb-0">
+              <div class="inline-block md:block">
+                <h3 class="text-2xl font-bold mb-2">Desenvolvedor Sênior</h3>
+                <p class="text-purple-400 mb-3">Empresa Tech • 2022 - Presente</p>
+                <p class="text-gray-400 leading-relaxed">
+                  Liderança técnica em projetos de grande escala, mentoria de desenvolvedores júnior e implementação de melhores práticas.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center justify-center md:justify-start">
+              <div class="w-4 h-4 bg-purple-600 rounded-full border-4 border-black absolute left-[18px] md:left-1/2 md:-translate-x-1/2"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item mb-16 md:mb-24 relative">
+          <div class="md:grid md:grid-cols-2 md:gap-8">
+            <div class="flex items-center justify-center md:justify-end order-2 md:order-1">
+              <div class="w-4 h-4 bg-purple-600 rounded-full border-4 border-black absolute left-[18px] md:left-1/2 md:-translate-x-1/2"></div>
+            </div>
+            <div class="mb-4 md:mb-0 order-1 md:order-2">
+              <div class="inline-block md:block">
+                <h3 class="text-2xl font-bold mb-2">Desenvolvedor Pleno</h3>
+                <p class="text-purple-400 mb-3">Startup Inovadora • 2020 - 2022</p>
+                <p class="text-gray-400 leading-relaxed">
+                  Desenvolvimento de aplicações web modernas usando React, Node.js e bancos de dados NoSQL.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item mb-16 md:mb-24 relative">
+          <div class="md:grid md:grid-cols-2 md:gap-8">
+            <div class="md:text-right mb-4 md:mb-0">
+              <div class="inline-block md:block">
+                <h3 class="text-2xl font-bold mb-2">Desenvolvedor Júnior</h3>
+                <p class="text-purple-400 mb-3">Agência Digital • 2019 - 2020</p>
+                <p class="text-gray-400 leading-relaxed">
+                  Criação de websites responsivos e landing pages para diversos clientes do setor comercial.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center justify-center md:justify-start">
+              <div class="w-4 h-4 bg-purple-600 rounded-full border-4 border-black absolute left-[18px] md:left-1/2 md:-translate-x-1/2"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 4 -->
+        <div class="timeline-item relative">
+          <div class="md:grid md:grid-cols-2 md:gap-8">
+            <div class="flex items-center justify-center md:justify-end order-2 md:order-1">
+              <div class="w-4 h-4 bg-purple-600 rounded-full border-4 border-black absolute left-[18px] md:left-1/2 md:-translate-x-1/2"></div>
+            </div>
+            <div class="mb-4 md:mb-0 order-1 md:order-2">
+              <div class="inline-block md:block">
+                <h3 class="text-2xl font-bold mb-2">Estágio em Desenvolvimento</h3>
+                <p class="text-purple-400 mb-3">Empresa de Software • 2018 - 2019</p>
+                <p class="text-gray-400 leading-relaxed">
+                  Primeiros passos no desenvolvimento profissional, aprendendo fundamentos e boas práticas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+      <!-- Projects Section -->
+  <section id="projetos" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">Projetos em Destaque</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <div class="project-card bg-gradient-to-br from-purple-900/30 to-indigo-900/30 rounded-2xl p-6 border border-purple-800/50">
+          <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4 text-2xl">
+            🚀
+          </div>
+          <h3 class="text-2xl font-bold mb-3">E-commerce Platform</h3>
+          <p class="text-gray-400 mb-4 leading-relaxed">
+            Plataforma completa de e-commerce com carrinho, pagamentos e painel administrativo.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded-full text-sm">React</span>
+            <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded-full text-sm">Node.js</span>
+            <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded-full text-sm">MongoDB</span>
+          </div>
+          <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">Ver projeto →</a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card bg-gradient-to-br from-blue-900/30 to-cyan-900/30 rounded-2xl p-6 border border-blue-800/50">
+          <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4 text-2xl">
+            📱
+          </div>
+          <h3 class="text-2xl font-bold mb-3">App Mobile</h3>
+          <p class="text-gray-400 mb-4 leading-relaxed">
+            Aplicativo mobile para gerenciamento de tarefas com sincronização em tempo real.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded-full text-sm">React Native</span>
+            <span class="px-3 py-1 bg-blue-600/20 text-blue-300 rounded-full text-sm">Firebase</span>
+          </div>
+          <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors">Ver projeto →</a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card bg-gradient-to-br from-green-900/30 to-emerald-900/30 rounded-2xl p-6 border border-green-800/50">
+          <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-4 text-2xl">
+            🎨
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Design System</h3>
+          <p class="text-gray-400 mb-4 leading-relaxed">
+            Sistema de design completo com componentes reutilizáveis e documentação.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded-full text-sm">React</span>
+            <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded-full text-sm">Storybook</span>
+            <span class="px-3 py-1 bg-green-600/20 text-green-300 rounded-full text-sm">Tailwind</span>
+          </div>
+          <a href="#" class="text-green-400 hover:text-green-300 transition-colors">Ver projeto →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Adicionando seção de depoimentos com carrossel CSS puro -->
+    <section id="depoimentos" class="testimonials">
+      <h2>Depoimentos</h2>
+      <div class="carousel-container">
+        <input type="radio" name="testimonial" id="testimonial-1" class="carousel-input" checked>
+        <input type="radio" name="testimonial" id="testimonial-2" class="carousel-input">
+        <input type="radio" name="testimonial" id="testimonial-3" class="carousel-input">
+        
+        <div class="carousel-slides">
+          <div class="testimonial-slide">
+            <p class="testimonial-text">"Excelente profissional! Entregou o projeto antes do prazo e com qualidade excepcional. Recomendo fortemente!"</p>
+            <p class="testimonial-author">Maria Silva</p>
+            <p class="testimonial-role">CEO - Tech Solutions</p>
+          </div>
+          <div class="testimonial-slide">
+            <p class="testimonial-text">"Trabalhar com este desenvolvedor foi uma experiência incrível. Comunicação clara e código limpo."</p>
+            <p class="testimonial-author">João Santos</p>
+            <p class="testimonial-role">CTO - StartupX</p>
+          </div>
+          <div class="testimonial-slide">
+            <p class="testimonial-text">"Profissional dedicado e criativo. Transformou nossa visão em realidade de forma brilhante!"</p>
+            <p class="testimonial-author">Ana Costa</p>
+            <p class="testimonial-role">Gerente de Projetos - Digital Agency</p>
+          </div>
+        </div>
+        
+        <div class="carousel-dots">
+          <label for="testimonial-1" class="carousel-dot"></label>
+          <label for="testimonial-2" class="carousel-dot"></label>
+          <label for="testimonial-3" class="carousel-dot"></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integrando formulário com Formspree -->
+    <section id="contato">
+      <h2>Entre em Contato</h2>
+      <div class="contato-content">
+        <p>Estou sempre aberto a novos projetos e oportunidades. Vamos conversar!</p>
+        <form class="contact-form" action="https://formspree.io/f/seu_id_formspree" method="POST">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="_replyto" required placeholder="seu@email.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="assunto">Assunto</label>
+            <input type="text" id="assunto" name="_subject" required placeholder="Assunto da mensagem">
+          </div>
+          
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" required placeholder="Escreva sua mensagem aqui..."></textarea>
+          </div>
+          
+          <button type="submit" class="submit-button">Enviar Mensagem</button>
+        </form>
+
+        <div class="divider">ou</div>
+
+        <div class="social-links">
+          <a href="mailto:nathalya.silvacovic@gmail.com" class="social-link">Email</a>
+          <a href="https://github.com/seuusuario" class="social-link">GitHub</a>
+          <a href="https://linkedin.com/in/seuusuario" class="social-link">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Meu Portfólio. Todos os direitos reservados.</p>
+    </footer>
+      <script>
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add active state to navigation on scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section[id]');
+      const scrollY = window.pageYOffset;
+
+      sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        const navLink = document.querySelector(`a[href="#${sectionId}"]`);
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          navLink?.classList.add('text-white');
+        } else {
+          navLink?.classList.remove('text-white');
+        }
+      });
+    });
+  </script>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Nathalya Silva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --text: #ffffff;
+            --text-muted: #a1a1aa;
+            --border: #27272a;
+        }
+
+        body.light-theme {
+            --bg-dark: #ffffff;
+            --bg-card: #f5f5f5;
+            --text: #1a1a1a;
+            --text-muted: #4a4a4a;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor.hover {
+            width: 60px;
+            height: 60px;
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--primary);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        .header-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+            pointer-events: none;
+            transition: all 0.1s ease;
+            opacity: 0;
+        }
+
+        header:hover .header-gradient {
+            opacity: 1;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-btn {
+            cursor: pointer;
+            width: 50px;
+            height: 26px;
+            background-color: var(--border);
+            border-radius: 50px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            transition: background-color 0.3s;
+            border: none;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: var(--primary);
+        }
+
+        .theme-toggle-btn::before {
+            content: "🌙";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            left: 3px;
+        }
+
+        body.light-theme .theme-toggle-btn::before {
+            content: "☀️";
+            transform: translateX(24px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .typing-text {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            min-height: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.5rem;
+            background: var(--primary);
+            margin-left: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Timeline */
+        .timeline {
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, transparent, var(--primary), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            background-color: var(--bg-dark);
+            padding: 2rem;
+            border-radius: 12px;
+            position: relative;
+            width: calc(50% - 3rem);
+            border: 2px solid var(--border);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: 3rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+            margin-left: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 4px solid var(--bg-dark);
+            z-index: 10;
+            box-shadow: 0 0 0 4px var(--border);
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .timeline-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-item {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        .skill-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .skill-level {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: lowercase;
+        }
+
+        .skill-level.avancado {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .skill-level.intermediario {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--primary);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .skill-level.basico {
+            background: rgba(251, 146, 60, 0.15);
+            color: #fb923c;
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+
+        .skill-description {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, margin-top 0.3s ease;
+            margin-top: 0;
+        }
+
+        .skill-description p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .skill-item.active .skill-description {
+            max-height: 200px;
+            margin-top: 1rem;
+        }
+
+        .skill-item.active {
+            border-color: var(--primary);
+        }
+
+        /* Projects Section */
+        .projects-filter {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-category {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            cursor: auto;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            color: var(--text);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            background: var(--primary);
+        }
+
+        .modal-video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .modal-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .carousel-input {
+            display: none;
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 2rem;
+            background-color: var(--bg-dark);
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-role {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--border);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #testimonial-1:checked~.carousel-slides {
+            transform: translateX(0%);
+        }
+
+        #testimonial-2:checked~.carousel-slides {
+            transform: translateX(-100%);
+        }
+
+        #testimonial-3:checked~.carousel-slides {
+            transform: translateX(-200%);
+        }
+
+        #testimonial-1:checked~.carousel-dots label:nth-child(1),
+        #testimonial-2:checked~.carousel-dots label:nth-child(2),
+        #testimonial-3:checked~.carousel-dots label:nth-child(3) {
+            background-color: var(--primary);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            text-align: left;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-intro {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+        }
+
+        .contact-form {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+
+        .divider {
+            margin: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background-color: var(--border);
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .social-links-contact {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link-btn {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--bg-card);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border);
+            display: inline-block;
+        }
+
+        .social-link-btn:hover {
+            background-color: var(--primary);
+            color: #ffffff;
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: var(--bg-dark);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .typing-text {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .timeline-line {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 3rem);
+                margin-left: 3rem !important;
+                margin-right: 0 !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-gradient"></div>
+        <nav>
+            <div class="logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#experience">Experiência</a></li>
+                <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#projects">Projetos</a></li>
+                <li><a href="#testimonials">Depoimentos</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contato</a></li>
+                <li><button class="theme-toggle-btn" id="themeToggle"></button></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Olá, eu sou a Nathalya</h1>
+            <div class="typing-text">
+                <span id="typed-text"></span>
+                <span class="typing-cursor"></span>
+            </div>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                Desenvolvedora apaixonada por criar experiências digitais incríveis!
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">Ver Projetos</a>
+                <a href="#contact" class="btn btn-secondary">Entre em Contato</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="fade-in">
+        <h2 class="section-title">Sobre Mim</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Sou uma desenvolvedora apaixonada por tecnologia, que programa, estuda e cria jogos. Tenho foco em
+                    unir criatividade e lógica para desenvolver experiências digitais envolventes e funcionais.
+                </p>
+                <p>
+                    Atualmente, venho me aprofundando em desenvolvimento de jogos (Godot, HTML, CSS e Dart/Flutter),
+                    sempre buscando aprender novas linguagens e técnicas que ampliem minhas habilidades como criadora.
+                </p>
+                <p>
+                    Além da programação, gosto de explorar conceitos de design, narrativas e interatividade, criando
+                    projetos que equilibram técnica e imaginação.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-10-16%20at%2014.39.19-t3ugc4r79c94S4Gz3QmQhNMdcf2wJ6.jpeg"
+                    alt="Foto de perfil" class="profile-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="fade-in">
+        <h2 class="section-title">Experiência Profissional</h2>
+        <div class="timeline">
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024 - Presente</div>
+                        <h3 class="timeline-title">Desenvolvedora de Jogos e Aplicações Web</h3>
+                        <div class="timeline-company">Projetos Independentes</div>
+                        <p class="timeline-description">
+                            Criação de jogos 2D na Godot, com foco em mecânicas simples, interações em primeira pessoa e
+                            jogabilidade inspirada em títulos como Good Pizza, Great Pizza.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - 2024</div>
+                        <h3 class="timeline-title">Estudante e Programadora Full Stack em Formação</h3>
+                        <div class="timeline-company">Projetos Educacionais e Pessoais</div>
+                        <p class="timeline-description">
+                            Aprofundamento em conceitos de front-end e back-end, estudando frameworks modernos e
+                            práticas de design de interface.
+                            Desenvolvimento de projetos próprios, como um app de viagens e um site de
+                            música com pop-ups personalizados.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 - 2023</div>
+                        <h3 class="timeline-title">Aprendizado em Desenvolvimento Web e Design de Interfaces</h3>
+                        <div class="timeline-company">Autoestudo e Cursos Online</div>
+                        <p class="timeline-description">
+                            Início da jornada no desenvolvimento com HTML, CSS e lógica de programação.
+                            Criação de páginas simples e aprimoramento gradual em usabilidade, estilo e estrutura
+                            semântica.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2022</div>
+                        <h3 class="timeline-title">Primeiros Passos na Programação e Criação de Jogos</h3>
+                        <div class="timeline-company">Aprendizado Autônomo</div>
+                        <p class="timeline-description">
+                            Exploração inicial da área de tecnologia e jogos. Desenvolvimento de pequenas ideias e
+                            protótipos, descobrindo o interesse por programação, design e narrativa interativa.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="fade-in">
+        <h2 class="section-title">Minhas Habilidades</h2>
+        <div class="skills-grid">
+            <div class="skill-item" onclick="toggleSkillDescription(this)">
+                <div class="skill-header">
+                    <span class="skill-name">HTML & CSS</span>
+                    <span class="skill-level intermediario">Intermediário</span>
+                </div>
+                <div class="skill-description">
+                    <p>Criação de páginas web responsivas, uso de Flexbox e Grid, animações CSS, e boas práticas de
+                        semântica HTML. Experiência com layouts modernos e acessibilidade.</p>
+                </div>
+            </div>
+            <div class="skill-item" onclick="toggleSkillDescription(this)">
+                <div class="skill-header">
+                    <span class="skill-name">JavaScript</span>
+                    <span class="skill-level intermediario">Intermediário</span>
+                </div>
+                <div class="skill-description">
+                    <p>Manipulação do DOM, eventos, funções assíncronas, fetch API, e criação de interações dinâmicas.
+                        Conhecimento em ES6+ e desenvolvimento de aplicações interativas.</p>
+                </div>
+            </div>
+            <div class="skill-item" onclick="toggleSkillDescription(this)">
+                <div class="skill-header">
+                    <span class="skill-name">Flutter</span>
+                    <span class="skill-level basico">Básico</span>
+                </div>
+                <div class="skill-description">
+                    <p>Desenvolvimento de aplicativos mobile com Dart/Flutter, criação de interfaces com widgets,
+                        navegação entre telas e gerenciamento básico de estado.</p>
+                </div>
+            </div>
+            <div class="skill-item" onclick="toggleSkillDescription(this)">
+                <div class="skill-header">
+                    <span class="skill-name">Figma</span>
+                    <span class="skill-level avancado">Avançado</span>
+                </div>
+                <div class="skill-description">
+                    <p>Criação de protótipos interativos, design systems, componentes reutilizáveis, guias de estilo e
+                        wireframes. Experiência em UI/UX design e colaboração em equipe.</p>
+                </div>
+            </div>
+            <div class="skill-item" onclick="toggleSkillDescription(this)">
+                <div class="skill-header">
+                    <span class="skill-name">Godot Engine</span>
+                    <span class="skill-level avancado">Avançado</span>
+                </div>
+                <div class="skill-description">
+                    <p>Desenvolvimento de jogos 2D com GDScript, implementação de mecânicas de gameplay, sistemas de
+                        física, animações, UI de jogos e gerenciamento de cenas.</p>
+                </div>
+            </div>
+            <div class="skill-item" onclick="toggleSkillDescription(this)">
+                <div class="skill-header">
+                    <span class="skill-name">UI/UX Design</span>
+                    <span class="skill-level intermediario">Intermediário</span>
+                </div>
+                <div class="skill-description">
+                    <p>Princípios de design de interface, experiência do usuário, hierarquia visual, teoria das cores,
+                        tipografia e criação de fluxos de navegação intuitivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="fade-in">
+        <h2 class="section-title">Meus Projetos</h2>
+
+        <div class="projects-filter">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="html">HTML/CSS</button>
+            <button class="filter-btn" data-filter="figma">Figma</button>
+            <button class="filter-btn" data-filter="flutter">Flutter</button>
+            <button class="filter-btn" data-filter="godot">Godot</button>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card" data-category="html" data-project="1">
+                <div class="project-image">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Player de Música Interativo</h3>
+                    <p class="project-category">HTML/CSS/JavaScript</p>
+                    <p class="project-description">
+                        Site com pop-up musical que permite adicionar áudios e vídeos, alterar cores dos botões e
+                        personalizar o plano de fundo por música.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal(1)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" data-category="figma" data-project="2">
+                <div class="project-image">
+                    <i class="fas fa-plane-departure"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">EuVouNaTrip</h3>
+                    <p class="project-category">Figma</p>
+                    <p class="project-description">
+                        Aplicativo de viagens com telas de check-in, atendimento e gerenciamento de ofertas. Criado no
+                        Figma com base em guia de estilo e protótipo completo.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">UI Design</span>
+                        <span class="tag">UX</span>
+                        <span class="tag">Figma</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal(2)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-category="flutter" data-project="3">
+                <div class="project-image">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">App EuVouNaTrip (Flutter)</h3>
+                    <p class="project-category">Flutter/Dart</p>
+                    <p class="project-description">
+                        Versão funcional do aplicativo EuVouNaTrip desenvolvida em Flutter, com foco em interface
+                        intuitiva e integração entre telas.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Dart</span>
+                        <span class="tag">UI</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal(3)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card" data-category="godot" data-project="4">
+                <div class="project-image">
+                    <i class="fas fa-pizza-slice"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Jogo da Pizzaria</h3>
+                    <p class="project-category">Godot</p>
+                    <p class="project-description">
+                        Jogo 2D em primeira pessoa desenvolvido na Godot, onde o jogador trabalha em uma pizzaria e
+                        precisa preparar pedidos para os clientes.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Godot</span>
+                        <span class="tag">GDScript</span>
+                        <span class="tag">Game Design</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal(4)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card" data-category="html" data-project="5">
+                <div class="project-image">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Site Educativo de HTML e CSS</h3>
+                    <p class="project-category">HTML/CSS</p>
+                    <p class="project-description">
+                        Página estilo documento explicando de forma simples e visual as principais tags e propriedades
+                        de HTML e CSS.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">Ensino</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal(5)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card" data-category="godot" data-project="6">
+                <div class="project-image">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Protótipo Interativo 2D</h3>
+                    <p class="project-category">Godot</p>
+                    <p class="project-description">
+                        Protótipo de jogo experimental em visão 2D com elementos de interação simples e foco em
+                        usabilidade, interface e ambientação.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Godot</span>
+                        <span class="tag">GDScript</span>
+                        <span class="tag">Prototipagem</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal(6)">Ver Detalhes</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="fade-in">
+        <h2 class="section-title">Depoimentos</h2>
+        <div class="testimonials">
+            <div class="carousel-container">
+                <input type="radio" name="testimonial" id="testimonial-1" class="carousel-input" checked>
+                <input type="radio" name="testimonial" id="testimonial-2" class="carousel-input">
+                <input type="radio" name="testimonial" id="testimonial-3" class="carousel-input">
+
+                <div class="carousel-slides">
+                    <div class="testimonial-slide">
+                        <p class="testimonial-text">"Excelente profissional! Entregou o projeto antes do prazo e com
+                            qualidade excepcional. Recomendo fortemente!"</p>
+                        <p class="testimonial-author">Maria Silva</p>
+                        <p class="testimonial-role">CEO - Tech Solutions</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-text">"Trabalhar com este desenvolvedor foi uma experiência incrível.
+                            Comunicação clara e código limpo."</p>
+                        <p class="testimonial-author">João Santos</p>
+                        <p class="testimonial-role">CTO - StartupX</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-text">"Profissional dedicado e criativo. Transformou nossa visão em
+                            realidade de forma brilhante!"</p>
+                        <p class="testimonial-author">Ana Costa</p>
+                        <p class="testimonial-role">Gerente de Projetos - Digital Agency</p>
+                    </div>
+                </div>
+
+                <div class="carousel-dots">
+                    <label for="testimonial-1" class="carousel-dot"></label>
+                    <label for="testimonial-2" class="carousel-dot"></label>
+                    <label for="testimonial-3" class="carousel-dot"></label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="fade-in">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Quais tecnologias você domina?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Trabalho principalmente com HTML, CSS, Dart/Flutter e Godot Engine, criando tanto aplicações web
+                        quanto jogos 2D interativos.
+                        Também tenho boa experiência com JavaScript e design de interfaces no Figma, unindo lógica e
+                        criatividade para desenvolver projetos funcionais e visualmente atrativos.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Quanto tempo leva para desenvolver um projeto?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        O tempo varia de acordo com a complexidade do projeto. Um site simples pode levar de 1-2
+                        semanas,
+                        enquanto aplicativos mais complexos podem levar de 1-3 meses. Sempre forneço um cronograma
+                        detalhado
+                        após entender os requisitos.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Você trabalha com projetos remotos?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Sim! Trabalho 100% remoto.
+                        Utilizo ferramentas modernas de comunicação e gerenciamento de projetos para garantir
+                        uma colaboração eficiente.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Oferece suporte após a entrega do projeto?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Sim, ofereço suporte pós-entrega por um período determinado (geralmente 30 dias) para
+                        correções de bugs e ajustes. Também ofereço planos de manutenção contínua para projetos
+                        que necessitam de atualizações regulares.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Como funciona o processo de desenvolvimento?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        O processo começa com uma reunião para entender suas necessidades. Depois, crio um protótipo
+                        ou wireframe para aprovação. Uma vez aprovado, inicio o desenvolvimento com entregas parciais
+                        para feedback. Após testes e ajustes finais, faço a entrega completa do projeto.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="contact-content">
+            <p class="contact-intro">Estou sempre aberta a novos projetos e oportunidades. Vamos conversar!</p>
+
+            <form class="contact-form" action="https://formspree.io/f/seu_id_formspree" method="POST">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" name="nome" placeholder="Seu nome completo" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="_replyto" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Assunto</label>
+                    <input type="text" name="_subject" placeholder="Assunto da mensagem" required>
+                </div>
+                <div class="form-group">
+                    <label>Mensagem</label>
+                    <textarea name="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+            </form>
+
+            <div class="divider">ou</div>
+
+            <div class="social-links-contact">
+                <a href="mailto:nathalya.silvacovic@gmail.com" class="social-link-btn">Email</a>
+                <a href="https://github.com/seuusuario" class="social-link-btn">GitHub</a>
+                <a href="https://linkedin.com/in/seuusuario" class="social-link-btn">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p style="color: var(--text-muted);">
+            © 2025 Portfolio de Nathalya Silva. Todos os direitos reservados.
+        </p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div id="modalMediaContainer"></div>
+            <div class="modal-body">
+                <h2 class="modal-title" id="modalTitle">Título do Projeto</h2>
+                <p class="modal-description" id="modalDescription">
+                    Descrição detalhada do projeto...
+                </p>
+                <div class="modal-links">
+                    <a href="#" class="btn btn-primary" id="modalDemoLink">Ver Demo</a>
+                    <a href="#" class="btn btn-secondary" id="modalCodeLink">Ver Código</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector(".cursor")
+        const cursorFollower = document.querySelector(".cursor-follower")
+
+        document.addEventListener("mousemove", (e) => {
+            cursor.style.left = e.clientX + "px"
+            cursor.style.top = e.clientY + "px"
+
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + "px"
+                cursorFollower.style.top = e.clientY + "px"
+            }, 100)
+        })
+
+        // Cursor hover effect
+        const hoverElements = document.querySelectorAll("a, button, .project-card, .skill-item")
+        hoverElements.forEach((el) => {
+            el.addEventListener("mouseenter", () => cursor.classList.add("hover"))
+            el.addEventListener("mouseleave", () => cursor.classList.remove("hover"))
+        })
+
+        // Header scroll effect
+        const header = document.querySelector("header")
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                header.classList.add("scrolled")
+            } else {
+                header.classList.remove("scrolled")
+            }
+        })
+
+        // Header gradient follow mouse
+        const headerGradient = document.querySelector(".header-gradient")
+        header.addEventListener("mousemove", (e) => {
+            const rect = header.getBoundingClientRect()
+            headerGradient.style.left = e.clientX - rect.left - 100 + "px"
+            headerGradient.style.top = e.clientY - rect.top - 100 + "px"
+        })
+
+        // Typing animation
+        const typingTexts = ["Desenvolvedora Full Stack", "Designer UI/UX", "Desenvolvedora Mobile", "Game Developer"]
+        let textIndex = 0
+        let charIndex = 0
+        let isDeleting = false
+        const typedTextElement = document.getElementById("typed-text")
+
+        function type() {
+            const currentText = typingTexts[textIndex]
+
+            if (isDeleting) {
+                typedTextElement.textContent = currentText.substring(0, charIndex - 1)
+                charIndex--
+            } else {
+                typedTextElement.textContent = currentText.substring(0, charIndex + 1)
+                charIndex++
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                setTimeout(() => (isDeleting = true), 2000)
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false
+                textIndex = (textIndex + 1) % typingTexts.length
+            }
+
+            const typingSpeed = isDeleting ? 50 : 100
+            setTimeout(type, typingSpeed)
+        }
+
+        type()
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault()
+                const target = document.querySelector(this.getAttribute("href"))
+                if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
+            })
+        })
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -100px 0px",
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible")
+                }
+            })
+        }, observerOptions)
+
+        document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el))
+
+        // Projects filter
+        const filterButtons = document.querySelectorAll(".filter-btn")
+        const projectCards = document.querySelectorAll(".project-card")
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const filter = button.dataset.filter
+
+                filterButtons.forEach((btn) => btn.classList.remove("active"))
+                button.classList.add("active")
+
+                projectCards.forEach((card) => {
+                    if (filter === "all" || card.dataset.category === filter) {
+                        card.classList.remove("hidden")
+                    } else {
+                        card.classList.add("hidden")
+                    }
+                })
+            })
+        })
+
+        // Project modal data
+        const projectData = {
+            1: {
+                title: "Player de Música Interativo",
+                description:
+                    "Site com pop-up musical que permite adicionar áudios e vídeos, alterar cores dos botões e personalizar o plano de fundo por música. O projeto foi desenvolvido com HTML, CSS e JavaScript puro, focando em uma interface intuitiva e personalizável. Inclui recursos como playlist dinâmica, controles de reprodução avançados e temas customizáveis.",
+                mediaType: "video",
+                mediaSrc: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                demo: "#",
+                code: "#",
+            },
+            2: {
+                title: "EuVouNaTrip",
+                description:
+                    "Aplicativo de viagens com telas de check-in, atendimento e gerenciamento de ofertas. Criado no Figma com base em guia de estilo e protótipo completo. O design focou em criar uma experiência de usuário fluida e moderna, com atenção especial à hierarquia visual e usabilidade. Inclui sistema de design completo com componentes reutilizáveis.",
+                mediaType: "image",
+                mediaSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%201437-a1EDB1aHyDHv5tt8OWZQ3v4JRN8iY3.png",
+                demo: "#",
+                code: "#",
+            },
+            3: {
+                title: "App EuVouNaTrip (Flutter)",
+                description:
+                    "Versão funcional do aplicativo EuVouNaTrip desenvolvida em Flutter, com foco em interface intuitiva e integração entre telas. O app implementa navegação fluida, gerenciamento de estado eficiente e integração com APIs de viagens. Inclui recursos como busca de destinos, reservas, histórico de viagens e perfil de usuário.",
+                mediaType: "image",
+                mediaSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%205-UgmJMfrPjtkNB1i8NpwgMsDcVr9TVp.png",
+                demo: "#",
+                code: "#",
+            },
+            4: {
+                title: "Jogo da Pizzaria",
+                description:
+                    "Jogo 2D em primeira pessoa desenvolvido na Godot, onde o jogador trabalha em uma pizzaria e precisa preparar pedidos para os clientes. O jogo apresenta mecânicas de gerenciamento de tempo, sistema de pontuação, clientes com diferentes níveis de paciência e upgrades de equipamentos. Inspirado em Good Pizza, Great Pizza, com gráficos coloridos e jogabilidade viciante.",
+                mediaType: "video",
+                mediaSrc: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                demo: "#",
+                code: "#",
+            },
+            5: {
+                title: "Site Educativo de HTML e CSS",
+                description:
+                    "Página estilo documento explicando de forma simples e visual as principais tags e propriedades de HTML e CSS. O site foi desenvolvido com foco em didática, apresentando exemplos interativos, código comentado e demonstrações visuais de cada conceito. Ideal para iniciantes que querem aprender desenvolvimento web de forma prática.",
+                mediaType: "video",
+                mediaSrc: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                demo: "#",
+                code: "#",
+            },
+            6: {
+                title: "Protótipo Interativo 2D",
+                description:
+                    "Protótipo de jogo experimental em visão 2D com elementos de interação simples e foco em usabilidade, interface e ambientação. O projeto explora mecânicas de movimento, colisão e interação com objetos, servindo como base para desenvolvimento de jogos mais complexos. Desenvolvido na Godot Engine com GDScript.",
+                mediaType: "video",
+                mediaSrc: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                demo: "#",
+                code: "#",
+            },
+        }
+
+        // Modal functions
+        function openModal(projectId) {
+            const modal = document.getElementById("projectModal")
+            const modalMediaContainer = document.getElementById("modalMediaContainer")
+            const data = projectData[projectId]
+
+            if (!data) {
+                console.error("Project data not found for ID:", projectId)
+                return
+            }
+
+            document.getElementById("modalTitle").textContent = data.title
+            document.getElementById("modalDescription").textContent = data.description
+            document.getElementById("modalDemoLink").href = data.demo
+            document.getElementById("modalCodeLink").href = data.code
+
+            // Clear previous media
+            modalMediaContainer.innerHTML = ""
+
+            // Add new media
+            if (data.mediaType === "image") {
+                const img = document.createElement("img")
+                img.src = data.mediaSrc
+                img.alt = data.title
+                img.classList.add("modal-video") // Reusing the class for styling
+                modalMediaContainer.appendChild(img)
+            } else if (data.mediaType === "video") {
+                const iframe = document.createElement("iframe")
+                iframe.src = data.mediaSrc
+                iframe.frameBorder = "0"
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                iframe.allowFullscreen = true
+                iframe.classList.add("modal-video")
+                modalMediaContainer.appendChild(iframe)
+            }
+
+            modal.classList.add("active")
+            document.body.style.overflow = "hidden"
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("projectModal")
+            modal.classList.remove("active")
+            document.body.style.overflow = "auto"
+
+            // Clear media when closing
+            const modalMediaContainer = document.getElementById("modalMediaContainer")
+            modalMediaContainer.innerHTML = ""
+        }
+
+        // Close modal on outside click
+        document.getElementById("projectModal").addEventListener("click", (e) => {
+            if (e.target.classList.contains("modal")) {
+                closeModal()
+            }
+        })
+
+        // Close modal with Escape key
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                closeModal()
+            }
+        })
+
+        // FAQ accordion
+        document.querySelectorAll(".faq-question").forEach((button) => {
+            button.addEventListener("click", () => {
+                const faqItem = button.parentElement
+                const isActive = faqItem.classList.contains("active")
+
+                document.querySelectorAll(".faq-item").forEach((item) => {
+                    item.classList.remove("active")
+                })
+
+                if (!isActive) {
+                    faqItem.classList.add("active")
+                }
+            })
+        })
+
+        // Contact form submission
+        document.querySelector(".contact-form").addEventListener("submit", (e) => {
+            e.preventDefault()
+            alert("Mensagem enviada com sucesso! Entrarei em contato em breve.")
+            e.target.reset()
+        })
+
+        // Theme toggle
+        const themeToggle = document.getElementById("themeToggle")
+
+        // Check for saved theme preference or default to dark
+        const currentTheme = localStorage.getItem("theme") || "dark"
+        if (currentTheme === "light") {
+            document.body.classList.add("light-theme")
+        }
+
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("light-theme")
+
+            // Save theme preference
+            const theme = document.body.classList.contains("light-theme") ? "light" : "dark"
+            localStorage.setItem("theme", theme)
+        })
+
+        // Skill description toggle function
+        function toggleSkillDescription(element) {
+            const isActive = element.classList.contains("active")
+
+            // Close all other skill items
+            document.querySelectorAll(".skill-item").forEach((item) => {
+                item.classList.remove("active")
+            })
+
+            // Toggle current item
+            if (!isActive) {
+                element.classList.add("active")
+            }
+        }
+    </script>
+</body>
+
+</html>
+
