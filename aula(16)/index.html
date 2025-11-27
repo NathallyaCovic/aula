@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Amor Animal - Resgate e Adoção de Animais</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #E67E22;
+            --primary-dark: #D35400;
+            --secondary: #F39C12;
+            --accent: #1ABC9C;
+            --accent-pink: #E91E63;
+            --dark: #2C3E50;
+            --light: #ECF0F1;
+            --bg: #F8F9FA;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-section h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-section p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===== MAIN ===== */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== NÚMEROS/IMPACTO ===== */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* ===== COMO AJUDAR ===== */
+        .ways-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .way-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+
+        .way-card:nth-child(2) {
+            border-top-color: var(--accent);
+        }
+
+        .way-card:nth-child(3) {
+            border-top-color: var(--accent-pink);
+        }
+
+        .way-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .way-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .way-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .way-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .way-card .btn {
+            background: var(--primary);
+            color: white;
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+
+        .way-card:nth-child(2) .btn {
+            background: var(--accent);
+        }
+
+        .way-card:nth-child(3) .btn {
+            background: var(--accent-pink);
+        }
+
+        /* ===== GALERIA COM ABAS ===== */
+        .gallery-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid var(--light);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            overflow: hidden;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== PROJETOS COM ABAS ===== */
+        .projects-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .projects-tab-content {
+            display: none;
+        }
+
+        .projects-tab-content.active {
+            display: block;
+        }
+
+        .projects-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .projects-table thead {
+            background: var(--primary);
+            color: white;
+        }
+
+        .projects-table th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .projects-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .projects-table tbody tr:hover {
+            background: #f9f9f9;
+        }
+
+        .project-status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .status-active {
+            background: #4CAF50;
+        }
+
+        .status-planning {
+            background: #FF9800;
+        }
+
+        /* ===== EQUIPE ===== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-image-container {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+        }
+
+        .team-info {
+            padding: 25px 20px;
+        }
+
+        .team-info h3 {
+            font-size: 22px;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .team-info p {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .team-info .description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* ===== DEPOIMENTOS ===== */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--accent-pink);
+        }
+
+        .testimonial-stars {
+            color: var(--secondary);
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* ===== NEWSLETTER ===== */
+        .newsletter {
+            background: linear-gradient(135deg, var(--dark) 0%, #34495E 100%);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 12px;
+            margin: 80px 0;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 14px;
+        }
+
+        .newsletter-form button {
+            padding: 12px 30px;
+            background: var(--accent-pink);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 20px 30px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 14px;
+            color: #BDC3C7;
+            line-height: 1.8;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #95A5A6;
+        }
+
+        .team-image-container {
+            width: 120px;
+            /* tamanho fixo */
+            height: 120px;
+            /* tamanho fixo */
+            border-radius: 50%;
+            /* deixa redondo */
+            overflow: hidden;
+            /* corta o excesso da imagem */
+            margin: 0 auto;
+            /* centraliza */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #eee;
+            /* fundo caso a imagem não carregue */
+        }
+
+        .team-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* garante que não distorce */
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-table {
+                font-size: 14px;
+            }
+
+            .projects-table th,
+            .projects-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <h1>🐾 Amor Animal</h1>
+                <p>Resgate e Adoção com Amor</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#como-ajudar">Como Ajudar</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#equipe">Equipe</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Mude uma vida com amor e responsabilidade</h2>
+            <p>Resgate, cuidado e adoção para cães, gatos e muito mais</p>
+            <div class="hero-buttons">
+                <a href="#galeria" class="btn btn-primary">Ver Animais para Adoção</a>
+                <a href="#como-ajudar" class="btn btn-secondary">Como Ajudar</a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- NÚMEROS DE IMPACTO -->
+        <section>
+            <div class="section-title">
+                <h2>Nosso Impacto</h2>
+                <p>Juntos, transformamos vidas todos os dias</p>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">850+</div>
+                    <div class="stat-label">Animais Resgatados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">720+</div>
+                    <div class="stat-label">Animais Adotados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1200+</div>
+                    <div class="stat-label">Voluntários Ativos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">R$ 500k+</div>
+                    <div class="stat-label">Investido em Cuidados</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMO AJUDAR -->
+        <section id="como-ajudar">
+            <div class="section-title">
+                <h2>Como Você Pode Ajudar</h2>
+                <p>Existem várias maneiras de contribuir para nossa missão</p>
+            </div>
+            <div class="ways-container">
+                <div class="way-card">
+                    <div class="way-icon">💝</div>
+                    <h3>Fazer uma Doação</h3>
+                    <p>Sua contribuição financia alimentação, medicamentos e cuidados veterinários para os animais.</p>
+                    <a href="#doacao" class="btn">Doar Agora</a>
+                </div>
+                <div class="way-card">
+                    <div class="way-icon">🏡</div>
+                    <h3>Apadrinhar um Animal</h3>
+                    <p>Apadrinha um animal com contribuição mensal e acompanhe sua jornada até encontrar um lar.</p>
+                    <a href="#doacao" class="btn">Apadrinhar</a>
+                </div>
+                <div class="way-card">
+                    <div class="way-icon">🤝</div>
+                    <h3>Ser Voluntário</h3>
+                    <p>Participe dos nossos projetos e eventos. Sua dedicação faz toda a diferença!</p>
+                    <a href="#doacao" class="btn">Se Voluntariar</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMULÁRIO DE DOAÇÃO -->
+        <section id="doacao">
+            <div class="section-title">
+                <h2>Faça sua Doação</h2>
+                <p>Escolha a forma de contribuir e mude vidas de animais</p>
+            </div>
+
+            <div
+                style="max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+                <form onsubmit="handleDonation(event)" style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Tipo de Doação -->
+                    <div>
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--dark);">Tipo
+                            de Contribuição</label>
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="radio" name="donation-type" value="unica" checked>
+                                <span>Doação Única</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="radio" name="donation-type" value="mensal">
+                                <span>Doação Mensal</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="radio" name="donation-type" value="apadrinhar">
+                                <span>Apadrinhar Animal</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Nome -->
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--dark);">Nome
+                            Completo *</label>
+                        <input type="text" placeholder="Seu nome" required
+                            style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;">
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--dark);">E-mail
+                            *</label>
+                        <input type="email" placeholder="seu@email.com" required
+                            style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;">
+                    </div>
+
+                    <!-- Valor -->
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--dark);">Valor
+                            da Doação (R$) *</label>
+                        <input type="number" placeholder="Ex: 50.00" min="5" step="0.01" required
+                            style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;">
+                    </div>
+
+                    <!-- Método de Pagamento -->
+                    <div>
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--dark);">Método
+                            de Pagamento *</label>
+                        <select required
+                            style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;">
+                            <option value="">Selecione uma opção</option>
+                            <option value="pix">Pix</option>
+                            <option value="credito">Cartão de Crédito</option>
+                            <option value="debito">Cartão de Débito</option>
+                            <option value="boleto">Boleto Bancário</option>
+                            <option value="transferencia">Transferência Bancária</option>
+                        </select>
+                    </div>
+
+                    <!-- Mensagem -->
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--dark);">Deixe
+                            uma mensagem (opcional)</label>
+                        <textarea placeholder="Sua mensagem de apoio..." rows="4"
+                            style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; font-family: inherit;"></textarea>
+                    </div>
+
+                    <!-- Checkbox -->
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" required>
+                        <span style="font-size: 14px;">Concordo em receber notícias e atualizações da ONG</span>
+                    </label>
+
+                    <!-- Botão Enviar -->
+                    <button type="submit" class="btn btn-primary"
+                        style="background: var(--primary); color: white; font-size: 16px; padding: 15px; cursor: pointer; width: 100%; margin-top: 10px;">
+                        Contribuir Agora
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- GALERIA COM ABAS -->
+        <section id="galeria">
+            <div class="section-title">
+                <h2>Galeria de Fotos</h2>
+            </div>
+
+            <div class="gallery-tabs">
+                <button class="tab-btn active" onclick="openGalleryTab(event, 'animais')">Animais em Resgate</button>
+                <button class="tab-btn" onclick="openGalleryTab(event, 'eventos')">Eventos</button>
+               </div>
+
+            <!-- Galeria de animais -->
+            <div id="animais" class="tab-content active">
+
+                <div class="gallery-card">
+                    <img src="https://s3.amazonaws.com/petz-cdm-stg/b70805c4-4ba8-4baf-94d7-318118f146ff.jpeg"
+                        alt="Cão resgatado" style="width: 100%; height: 250px; object-fit: cover; display: block;">
+                    <div style="padding: 15px; background: white;">
+                        <h4 style="margin: 0; color: var(--primary);">
+                            Thor ♂
+                        </h4>
+                        <p style="font-size: 14px; margin-top: 5px;">
+                            Encontrado machucado, muito dócil e carinhoso. Ama brincar e já está recuperado.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <img src="https://s3.amazonaws.com/petz-cdm-stg/05248b16-44a9-405a-884d-bdae90b9d772.jpeg"
+                        alt="Gato resgatado" style="width: 100%; height: 250px; object-fit: cover; display: block;">
+                    <div style="padding: 15px; background: white;">
+                        <h4 style="margin: 0; color: var(--primary);">
+                            Luna ♀
+                        </h4>
+                        <p style="font-size: 14px; margin-top: 5px;">
+                            Gatinha tranquila e observadora. Adora receber carinho e convive bem com outros gatos.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <img src="https://s3.amazonaws.com/petz-cdm-stg/b87685df-5362-4f85-9d53-258808535611.jpeg"
+                        alt="Animal resgatado" style="width: 100%; height: 250px; object-fit: cover; display: block;">
+                    <div style="padding: 15px; background: white;">
+                        <h4 style="margin: 0; color: var(--primary);">
+                            Belinha ♀
+                        </h4>
+                        <p style="font-size: 14px; margin-top: 5px;">
+                            Resgatada após abandono, muito amorosa e sociável. Ótima para família com crianças.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <img src="https://static-file.petz.com.br/pet-backend/images/7fb0bfe0-5ef0-4007-a91d-80e368ed9ce9.jpeg"
+                        alt="Cão amigável" style="width: 100%; height: 250px; object-fit: cover; display: block;">
+                    <div style="padding: 15px; background: white;">
+                        <h4 style="margin: 0; color: var(--primary);">
+                            Max Verstappen ♂
+                        </h4>
+                        <p style="font-size: 14px; margin-top: 5px;">
+                            Energíco e brincalhão, ideal para quem gosta de passear. Muito obediente.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <img src="https://static-file.petz.com.br/pet-backend/images/1f7e673e-d445-4d52-90ac-0ad6a6da2a37.jpeg"
+                        alt="Filhote resgatado" style="width: 100%; height: 250px; object-fit: cover; display: block;">
+                    <div style="padding: 15px; background: white;">
+                        <h4 style="margin: 0; color: var(--primary);">
+                            Pinpi ♂
+                        </h4>
+                        <p style="font-size: 14px; margin-top: 5px;">
+                            Filhote alegre, curioso e muito esperto. Perfeito para quem quer um melhor amigo desde
+                            pequeno.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <img src="https://i.pinimg.com/236x/0e/fc/05/0efc055c40e47f842ae0c690dc6a87ec.jpg"
+                        alt="Cachorro feliz" style="width: 100%; height: 250px; object-fit: cover; display: block;">
+                    <div style="padding: 15px; background: white;">
+                        <h4 style="margin: 0; color: var(--primary);">
+                            Destruidor de mundos ♀
+                        </h4>
+                        <p style="font-size: 14px; margin-top: 5px;">
+                            Muito carinhosa, adora brincar com crianças e se dá bem com qualquer pessoa.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Galeria de eventos -->
+            <div id="eventos" class="tab-content">
+                <div class="gallery-card">
+                    <img src="data:image/jpeg;base64,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"
+                        alt="Evento de adoção de cães"
+                        style="width: 100%; height: 250px; object-fit: cover; display: block;">
+
+                    <div style="padding: 15px; background: white;">
+                        <h4 style="margin: 0; color: var(--primary);">
+                            Feira de Adoção – Amor Animal
+                        </h4>
+
+                        <p style="font-size: 14px; margin-top: 5px;">
+                            Dia dedicado à adoção responsável, com vários cães resgatados recebendo carinho e
+                            buscando um novo lar. O evento contou com voluntários, veterinários e famílias
+                            interessadas em adotar. Uma ação que salvou vidas e espalhou amor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        <!-- PROJETOS COM ABAS -->
+        <section id="projetos">
+            <div class="section-title">
+                <h2>Nossos Projetos</h2>
+                <p>Conheça as iniciativas que fazem a diferença</p>
+            </div>
+
+            <!-- Adicionado tabs para projetos -->
+            <div class="projects-tabs">
+                <button class="tab-btn active" onclick="openProjectsTab(event, 'todos')">Todos os Projetos</button>
+                <button class="tab-btn" onclick="openProjectsTab(event, 'ativos')">Projetos Ativos</button>
+                <button class="tab-btn" onclick="openProjectsTab(event, 'planejamento')">Em Planejamento</button>
+                <button class="tab-btn" onclick="openProjectsTab(event, 'especiais')">Projetos Especiais</button>
+            </div>
+
+            <!-- Todos os Projetos -->
+            <div id="todos" class="projects-tab-content active">
+                <table class="projects-table">
+                    <thead>
+                        <tr>
+                            <th>Nome do Projeto</th>
+                            <th>Público Atendido</th>
+                            <th>Ano de Início</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Resgate de Rua</td>
+                            <td>Animais de rua</td>
+                            <td>2015</td>
+                            <td><span class="project-status-badge status-active">Ativo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Adoção Responsável</td>
+                            <td>Famílias interessadas</td>
+                            <td>2016</td>
+                            <td><span class="project-status-badge status-active">Ativo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Veterinário Comunitário</td>
+                            <td>Comunidades carentes</td>
+                            <td>2017</td>
+                            <td><span class="project-status-badge status-active">Ativo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Educação Ambiental</td>
+                            <td>Escolas e crianças</td>
+                            <td>2019</td>
+                            <td><span class="project-status-badge status-planning">Planejamento</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Projetos Ativos -->
+            <div id="ativos" class="projects-tab-content">
+                <table class="projects-table">
+                    <thead>
+                        <tr>
+                            <th>Nome do Projeto</th>
+                            <th>Público Atendido</th>
+                            <th>Ano de Início</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Resgate de Rua</td>
+                            <td>Animais de rua</td>
+                            <td>2015</td>
+                            <td><span class="project-status-badge status-active">Ativo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Adoção Responsável</td>
+                            <td>Famílias interessadas</td>
+                            <td>2016</td>
+                            <td><span class="project-status-badge status-active">Ativo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Veterinário Comunitário</td>
+                            <td>Comunidades carentes</td>
+                            <td>2017</td>
+                            <td><span class="project-status-badge status-active">Ativo</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Projetos em Planejamento -->
+            <div id="planejamento" class="projects-tab-content">
+                <table class="projects-table">
+                    <thead>
+                        <tr>
+                            <th>Nome do Projeto</th>
+                            <th>Público Atendido</th>
+                            <th>Ano de Início</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Educação Ambiental</td>
+                            <td>Escolas e crianças</td>
+                            <td>2019</td>
+                            <td><span class="project-status-badge status-planning">Planejamento</span></td>
+                        </tr>
+                        <tr>
+                            <td>Centro de Reabilitação</td>
+                            <td>Animais feridos</td>
+                            <td>2024</td>
+                            <td><span class="project-status-badge status-planning">Planejamento</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Projetos Especiais -->
+            <div id="especiais" class="projects-tab-content">
+                <table class="projects-table">
+                    <thead>
+                        <tr>
+                            <th>Nome do Projeto</th>
+                            <th>Público Atendido</th>
+                            <th>Ano de Início</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cães de Assistência</td>
+                            <td>Pessoas com deficiência</td>
+                            <td>2018</td>
+                            <td><span class="project-status-badge status-active">Ativo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Terapia Animal</td>
+                            <td>Hospitais e asilos</td>
+                            <td>2020</td>
+                            <td><span class="project-status-badge status-active">Ativo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Resgate Internacional</td>
+                            <td>Animais em perigo</td>
+                            <td>2021</td>
+                            <td><span class="project-status-badge status-active">Ativo</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- EQUIPE -->
+        <section id="equipe">
+            <div class="section-title">
+                <h2>Nossa Equipe</h2>
+                <p>Pessoas dedicadas que fazem a diferença</p>
+            </div>
+
+            <!-- Adicionada seção de equipe com cartões de membros -->
+            <div class="team-grid">
+
+                <div class="team-card">
+                    <div class="team-image-container">
+                        <img
+                            src="https://scontent.fgru6-1.fna.fbcdn.net/v/t1.15752-9/589915492_3722714724703568_3286670626705813089_n.png?_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=qi3sNjALzhgQ7kNvwGoV3lf&_nc_oc=Adn2Q_c_dWagHwBi2zDO63asbEmnYISXEgdTFimuT24wahriNJABb8w_socL-r56wF8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fgru6-1.fna&oh=03_Q7cD3wGEkgTlsoSIBPgLIPq0V9P1ha7aTiPkyhOIW3eGEORSvQ&oe=694FD922">
+                    </div>
+                    <div class="team-info">
+                        <h3>Sucrilhos Ralax</h3>
+                        <p>Diretora Executiva</p>
+                        <p class="description">Fundador da ONG com 10+ anos de experiência em proteção animal e
+                            resgate.</p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image-container">
+                        <img
+                            src="https://scontent-gru1-2.xx.fbcdn.net/v/t1.15752-9/591662932_25219031457750318_8313982663377248070_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=_sZeQtzVgjoQ7kNvwFg5K0x&_nc_oc=AdmPuGBMn_nQJVPmCx6EwNs5rSXjBLC1JC6yJgYD4SO64lyJmIwgzq8hPkf5JAPldgw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-gru1-2.xx&oh=03_Q7cD3wHd5cI0EOOFBPS9xMArdCn0RI7IjBJqXW2MFZJnn3dVyw&oe=694FD805">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Neverick</h3>
+                        <p>Veterinário Responsável</p>
+                        <p class="description">Especialista em cuidados emergenciais e reabilitação de animais
+                            resgatados.</p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image-container">
+                        <img
+                            src="https://scontent-gru2-1.xx.fbcdn.net/v/t1.15752-9/589440781_713561984678373_3563482906722734519_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=107&ccb=1-7&_nc_sid=0024fc&_nc_ohc=amKccxxQcesQ7kNvwG1S1kq&_nc_oc=Adl_2imPWxQAI3qVH_J2WEyzCi8PVY9iPAqPFMqHWq0WJ147USHbX_MZhTId3jnXYKY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-gru2-1.xx&oh=03_Q7cD3wFJl2wxqwIoCVpJVVXMR8Xt0Jd-Zmcoo3HYDJqPRTNrag&oe=694FF218">
+                    </div>
+                    <div class="team-info">
+                        <h3>Rodrigo Ovario</h3>
+                        <p>Coordenadora de Projetos</p>
+                        <p class="description">Responsável pela coordenação e planejamento de todos os nossos programas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image-container">
+                        <img
+                            src="https://scontent-gru1-2.xx.fbcdn.net/v/t1.15752-9/591662932_25219031457750318_8313982663377248070_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=_sZeQtzVgjoQ7kNvwFg5K0x&_nc_oc=AdmPuGBMn_nQJVPmCx6EwNs5rSXjBLC1JC6yJgYD4SO64lyJmIwgzq8hPkf5JAPldgw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-gru1-2.xx&oh=03_Q7cD3wHd5cI0EOOFBPS9xMArdCn0RI7IjBJqXW2MFZJnn3dVyw&oe=694FD805">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Silva Montes</h3>
+                        <p>Gestor Financeiro</p>
+                        <p class="description">Gerencia os recursos e garante transparência em todas as operações.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- DEPOIMENTOS -->
+            <section>
+                <div class="section-title">
+                    <h2>Histórias de Sucesso</h2>
+                    <p>Vidas transformadas pela adoção responsável</p>
+                </div>
+                <div class="testimonials">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                        <div class="testimonial-text">"Adotar o Max foi uma das melhores decisões da minha vida. A
+                            equipe
+                            foi tão atencioso e me orientou durante todo o processo!"</div>
+                        <div class="testimonial-author">- João Silva</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                        <div class="testimonial-text">"Luna trouxe tanta alegria para nossa família. Não consigo
+                            imaginar a
+                            vida sem ela. Obrigado Amor Animal!"</div>
+                        <div class="testimonial-author">- Maria Oliveira</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                        <div class="testimonial-text">"Ser voluntário aqui me mudou. Ver o impacto que podemos fazer na
+                            vida
+                            dos animais é inspirador demais!"</div>
+                        <div class="testimonial-author">- Pedro Costa</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NEWSLETTER -->
+            <section class="newsletter">
+                <div class="newsletter-content">
+                    <h2>Fique Conectado</h2>
+                    <p>Receba notícias sobre novos animais e projetos especiais em seu e-mail</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Seu e-mail" required>
+                        <button type="submit">Inscrever</button>
+                    </form>
+                </div>
+            </section>
+    </main>
+    <!-- FORMULÁRIO DE DOAÇÃO -->
+    <section id="doacao">
+        <div class="section-title">
+            <h2>Faça uma Doação ou Apadrinhe</h2>
+            <p>Sua ajuda salva vidas. Toda contribuição importa!</p>
+        </div>
+        <div
+            style=" max-width: 700px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); ">
+            <form> <label>Seu Nome:</label> <input type="text" required
+                    style=" width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc; ">
+                <label>Seu E-mail:</label> <input type="email" required
+                    style=" width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc; ">
+                <label>Tipo de Contribuição:</label> <select
+                    style=" width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc; ">
+                    <option>Doação Única</option>
+                    <option>Apadrinhamento Mensal</option>
+                    <option>Quero ser Voluntário</option>
+                </select> <label>Valor da Contribuição:</label> <select
+                    style=" width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc; ">
+                    <option>R$ 10</option>
+                    <option>R$ 20</option>
+                    <option>R$ 50</option>
+                    <option>R$ 100</option>
+                    <option>Outro valor</option>
+                </select> <label>Mensagem (opcional):</label> <textarea rows="4"
+                    style=" width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc; "></textarea>
+                <button type="submit"
+                    style=" width:100%; background: var(--primary); color:white; padding:15px; border:none; border-radius:8px; font-size:18px; cursor:pointer; margin-top:10px; ">Enviar
+                    Contribuição</button>
+            </form>
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <footer id="contato">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Instituto Amor Animal</h3>
+                <p>Endereço: Rua dos Animais, 123 - Centro<br>Cidade, Estado - 12345-678</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>Email: <a href="mailto:info@amoranimal.org">info@amoranimal.org</a></p>
+                <p>Telefone: <a href="tel:+55123456789">(55) 1234-5678</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <p><a href="#home">Home</a></p>
+                <p><a href="#galeria">Galeria</a></p>
+                <p><a href="#projetos">Projetos</a></p>
+                <p><a href="#equipe">Equipe</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Instituto Amor Animal. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openGalleryTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.querySelectorAll('.gallery-tabs ~ .tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove('active');
+            }
+            document.getElementById(tabName).classList.add('active');
+
+            tabbuttons = evt.currentTarget.parentElement.querySelectorAll('.tab-btn');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove('active');
+            }
+            evt.currentTarget.classList.add('active');
+        }
+
+        function openProjectsTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.querySelectorAll('.projects-tabs ~ .projects-tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove('active');
+            }
+            document.getElementById(tabName).classList.add('active');
+
+            tabbuttons = evt.currentTarget.parentElement.querySelectorAll('.tab-btn');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove('active');
+            }
+            evt.currentTarget.classList.add('active');
+        }
+
+        function handleDonation(e) {
+            e.preventDefault();
+            alert('Obrigado por sua generosidade! Você será redirecionado para o gateway de pagamento.');
+            // Aqui você pode integrar um gateway de pagamento real
+        }
+    </script>
+</body>
+
+</html>

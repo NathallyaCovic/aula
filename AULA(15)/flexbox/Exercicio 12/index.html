@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imagens Centralizadas</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center; /* centraliza horizontalmente */
+      align-items: center;     /* centraliza verticalmente */
+      background-color: #f2f2f2;
+    }
+
+    .imagens {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; 
+      gap: 15px;
+    }
+
+    .imagens img {
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="imagens">
+    <img src="https://cdn.awsli.com.br/600x700/767/767489/produto/110450408/1bd2f1341c.jpg" alt="Imagem 1">
+    <img src="https://cdn.awsli.com.br/600x700/767/767489/produto/110450408/1bd2f1341c.jpg" alt="Imagem 2">
+    <img src="https://cdn.awsli.com.br/600x700/767/767489/produto/110450408/1bd2f1341c.jpg" alt="Imagem 3">
+  </div>
+</body>
+
+</html>

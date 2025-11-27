@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rodapé Flexbox</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column; /* deixa o rodapé embaixo */
+      justify-content: flex-end;
+      margin: 0;
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+
+    footer {
+      background-color: #111;
+      color: white;
+      display: flex;
+      justify-content: space-between; /* distribui as 3 seções */
+      align-items: center;
+      padding: 20px 40px;
+    }
+
+    .secao {
+      flex: 1;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <footer>
+    <div class="secao">© 2025 Nathyyyyyy</div>
+    <div class="secao">Contato: (XX)XXXXX-XXXX</div>
+    <div class="secao">Redes Sociais</div>
+  </footer>
+</body>
+
+</html>
